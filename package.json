@@ -1,0 +1,34 @@
+{
+  "name": "@upsect/seeker",
+  "version": "0.1.0",
+  "description": "Node utility to check if a module is installed, and optionally fall back to another module if it's missing.",
+  "license": "BSD-3-Clause",
+  "author": "Nathan Allen <nallen@upsect.com>",
+  "main": "lib/index.js",
+  "repository": "github:upsect/seeker",
+  "bugs": "https://github.com/upsect/seeker/issues",
+  "scripts": {
+    "test": "nyc mocha"
+  },
+  "keywords": [
+    "dotenv",
+    "node",
+    "fallback",
+    "require",
+    "failover",
+    "dependencies",
+    "environments"
+  ],
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^7.18.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.1.0",
+    "fancy-test": "^1.4.10",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0"
+  }
+}
