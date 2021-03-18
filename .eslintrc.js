@@ -1,0 +1,29 @@
+module.exports = {
+  env: {
+    commonjs: true,
+    es2021: true,
+    node: true,
+    mocha: true
+  },
+  extends: [
+    'standard'
+  ],
+  parserOptions: {
+    ecmaVersion: 12
+  },
+  rules: {
+    'array-bracket-spacing': [ 'error', 'always', {
+      singleValue: true,
+      objectsInArrays: false,
+      arraysInArrays: false
+    }],
+    'computed-property-spacing': [ 'error', 'always' ],
+    'no-multiple-empty-lines': [ 'error', {
+      max: 2
+    }],
+    'space-in-parens': [ 'error', 'always', {
+      exceptions: [ '{}', '[]', '()', 'empty' ]
+    }],
+    semi: [ 'error', 'always' ]
+  }
+};
