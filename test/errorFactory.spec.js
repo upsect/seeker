@@ -16,8 +16,8 @@ describe( 'import options', () => {
     .catch( 'Expected `index` to be of type `string`' )
     .it( 'throws an error when `index` type is invalid' );
   fancy
-    .do(() => Seeker.import({ index: 'foobar' }))
-    .catch( 'Specified `index` \'foobar\' is not a directory' )
+    .do(() => Seeker.import({ index: `${process.cwd()}/test/foobar` }))
+    .catch( 'Specified `index` \'/Users/nallen/Developer/GitHub/upsect/seeker/test/foobar\' is not a directory' )
     .it( 'throws an error when `index` is not a directory' );
   fancy
     .do(() => Seeker.import({ module: 'foobar' }))
@@ -25,6 +25,6 @@ describe( 'import options', () => {
     .it( 'throws an error when `module` type is invalid' );
   fancy
     .do(() => Seeker.import({ module: [ 'foobar' ] }))
-    .catch( 'Expected `module` to contain multiple values. If you only need to import a single module, use the native `require` method provided by Node.js' )
+    .catch( 'Use Node.js `require` to import single modules' )
     .it( 'throws an error when only one `module` is specified' );
 });
