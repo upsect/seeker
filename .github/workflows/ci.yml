@@ -1,0 +1,43 @@
+name: CI
+on:
+  push:
+    branches: [ master ]
+    tags:
+      - '!*' # Do not execute on tags
+    paths:
+      - lib/*
+      - test/*
+      - '*.json'
+  pull_request:
+    paths:
+      - '!*.MD'
+jobs:
+  test:
+    strategy:
+      matrix:
+        platform: [ ubuntu-latest, macOS-latest ]
+        node: [12.x, 14.x, 15.x]
+    name: test/node ${{ matrix.node }}/${{ matrix.platform }}
+    runs-on: ${{ matrix.platform }}
+    steps:
+    - uses: actions/checkout@main
+    - uses: actions/setup-node@main
+      with:
+        node-version: ${{ matrix.node }}
+    - run: npm ci
+    - run: npm test
+  coverage:
+    needs: [ test ]
+    name: coverage
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@main
+    - uses: actions/setup-node@main
+      with:
+        node-version: '12'
+    - run: npm ci
+    - uses: paambaati/codeclimate-action@v2.2.4
+      env:
+        CC_TEST_REPORTER_ID: dcff2215f744ec4ec2904848859c317ebfd60c81a329e5994bfa1193fdead0f2
+      with:
+        coverageCommand: npm run coverage
