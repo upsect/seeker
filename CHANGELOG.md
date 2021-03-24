@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ## [1.0.0] - 2021-03-22
+- Breaking: removed `exists` method from public interface
+- Breaking: reshaped `import` method with new options
 
 ## [0.1.0] - 2021-01-24
 - Initial release
