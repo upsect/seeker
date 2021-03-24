@@ -1,7 +1,8 @@
 name: CI
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
     tags:
       - '!*' # Do not execute on tags
     paths:
@@ -10,7 +11,7 @@ on:
       - '*.json'
   pull_request:
     paths:
-      - '!*.MD'
+      - '!*.md'
 jobs:
   test:
     strategy:

@@ -2,13 +2,13 @@
   <img src="seeker.png" alt=""><br>
   seeker<br>
   <p align="center">
-    <a href="https://twitter.com/nallenscott">
-      <img src="https://img.shields.io/badge/contact-nallenscott-blue?style=flat" alt="contact">
-    </a>
+    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/upsect/seeker/CI">
+    <img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/upsect/seeker">
+    <img alt="Code Climate coverage" src="https://img.shields.io/codeclimate/coverage/upsect/seeker">
   </p>
 </h1>
 
-Seeker is a Node utility that checks if a module is installed and optionally falls back to another module if it's missing. Perfect for development – use local packages while the rest of your team uses the registery.
+Seeker provides features we all wish Node's `require` had from day one, like requiring a module and optionally falling back to another module if it's missing, or requiring a directory of modules and getting all of their exports conveniently organized by file name.
 
 ## Install
 ```
@@ -17,23 +17,38 @@ Seeker is a Node utility that checks if a module is installed and optionally fal
 
 ## API
 
-### .exists(module)
-- `module` \<string\> module name or path
-
-Returns `true` if the module resolves, otherwise returns `false`.
-
-```js
-const seeker = require('seeker')
-
-const module = seeker.exists('module')
-```
-
-### .import(module1 [,module2 ...])
-- `module` \<string\> module name or path
+#### `.import({ module: [ list ]})`
+- `list` `<string[]>` list of module names or paths
 
 Returns the first module that resolves, otherwise returns `null`.
 ```js
-const seeker = require('seeker')
+const Seeker = require('seeker');
 
-const module = seeker.import('./module1', 'module2')
+const Module = Seeker.import({ module: ['./module1', 'module2']});
+```
+
+#### `.import({ index: [ path ]})`
+- `path` `<string>` path to modules directory
+
+Returns an object with module exports, otherwise returns `null`. Supports CJS modules that export a function, array, plain object, or class. Index.js and dot files are ignored.
+
+```js
+const Seeker = require('seeker');
+
+const Index = Seeker.import({ index: './my_modules' });
+
+// my_modules/
+// ├─ .dotfile
+// ├─ index.js
+// ├─ foo.service.js > function
+// ├─ bar.plugins.js > [ function, function, ... ]
+// ├─ baz.routes.js  > { get: function, post: function }
+// ├─ qux.class.js   > class { ... }
+
+// Returns {
+//   foo: function,
+//   bar: [ function, function ],
+//   baz: { get: function, post: function },
+//   qux: class { ... }
+// }
 ```
