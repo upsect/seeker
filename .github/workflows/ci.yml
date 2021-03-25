@@ -1,29 +1,44 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
 name: CI
-
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
+    tags:
+      - '!*' # Do not execute on tags
+    paths:
+      - lib/*
+      - test/*
+      - '*.json'
   pull_request:
-    branches: [ master ]
-
+    paths:
+      - '!*.md'
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
+  test:
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 15.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+        platform: [ ubuntu-latest, macOS-latest ]
+        node: [12.x, 14.x, 15.x]
+    name: test/node ${{ matrix.node }}/${{ matrix.platform }}
+    runs-on: ${{ matrix.platform }}
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - uses: actions/checkout@main
+    - uses: actions/setup-node@main
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: ${{ matrix.node }}
     - run: npm ci
     - run: npm test
+  coverage:
+    needs: [ test ]
+    name: coverage
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@main
+    - uses: actions/setup-node@main
+      with:
+        node-version: '12'
+    - run: npm ci
+    - uses: paambaati/codeclimate-action@v2.2.4
+      env:
+        CC_TEST_REPORTER_ID: dcff2215f744ec4ec2904848859c317ebfd60c81a329e5994bfa1193fdead0f2
+      with:
+        coverageCommand: npm run coverage
