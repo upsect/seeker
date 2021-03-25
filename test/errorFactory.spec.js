@@ -17,7 +17,7 @@ describe( 'import options', () => {
     .it( 'throws an error when `index` type is invalid' );
   fancy
     .do(() => Seeker.import({ index: `${process.cwd()}/test/foobar` }))
-    .catch( 'Specified `index` \'/Users/nallen/Developer/GitHub/upsect/seeker/test/foobar\' is not a directory' )
+    .catch( `Specified \`index\` '${process.cwd()}/test/foobar' is not a directory` )
     .it( 'throws an error when `index` is not a directory' );
   fancy
     .do(() => Seeker.import({ module: 'foobar' }))
