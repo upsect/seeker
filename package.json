@@ -1,6 +1,6 @@
 {
   "name": "@upsect/seeker",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Node utility to check if a module is installed, and optionally fall back to another module if it's missing.",
   "license": "BSD-3-Clause",
   "author": "Nathan Allen <nallen@upsect.com>",
