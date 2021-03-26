@@ -8,7 +8,7 @@
   "repository": "github:upsect/seeker",
   "scripts": {
     "test": "mocha",
-    "coverage": "nyc npm test --reporter=lcov"
+    "coverage": "nyc --reporter=lcov npm test"
   },
   "devDependencies": {
     "chai": "^4.3.4",

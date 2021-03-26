@@ -2,9 +2,7 @@
   <img src="seeker.png" alt=""><br>
   seeker<br>
   <p align="center">
-    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/upsect/seeker/CI">
-    <img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/upsect/seeker">
-    <img alt="Code Climate coverage" src="https://img.shields.io/codeclimate/coverage/upsect/seeker">
+    <a href="https://www.codacy.com/gh/upsect/seeker/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=upsect/seeker&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/52b7a816d8e14600914773b0a9347411"/></a>
   </p>
 </h1>
 
