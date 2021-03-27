@@ -29,25 +29,10 @@ const Module = Seeker.import({ module: ['./module1', 'module2']});
 ### `.import({ index: [ path ]})`
 - `path` `<string>` path to modules directory
 
-Returns an object with module exports, otherwise returns `null`. Supports CJS modules that export a function, array, plain object, or class. Index.js and dot files are ignored.
+Returns an object with module exports, otherwise returns `null`. Supports CJS modules that export a function, array, plain object, or class. Index.js and dot files are ignored. Refer to the test folder for examples.
 
 ```js
 const Seeker = require('seeker');
 
 const Index = Seeker.import({ index: './my_modules' });
-
-// my_modules/
-// ├─ .dotfile
-// ├─ index.js
-// ├─ foo.service.js > function
-// ├─ bar.plugins.js > [ function, function, ... ]
-// ├─ baz.routes.js  > { get: function, post: function }
-// ├─ qux.class.js   > class { ... }
-
-// Returns {
-//   foo: function,
-//   bar: [ function, function ],
-//   baz: { get: function, post: function },
-//   qux: class { ... }
-// }
 ```
