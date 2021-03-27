@@ -10,6 +10,15 @@
     "test": "mocha",
     "coverage": "nyc --reporter=lcov npm test"
   },
+  "keywords": [
+    "dependencies",
+    "dotenv",
+    "environments",
+    "failover",
+    "fallback",
+    "node",
+    "require"
+  ],
   "devDependencies": {
     "chai": "^4.3.4",
     "eslint": "^7.22.0",
