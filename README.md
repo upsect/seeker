@@ -29,7 +29,7 @@ const Module = Seeker.import({ module: ['./module1', 'module2']});
 ### `.import({ index: [ path ]})`
 - `path` `<string>` path to modules directory
 
-Returns an object with module exports, otherwise returns `null`. Supports CJS modules that export a function, array, plain object, or class. Index.js and dot files are ignored. Refer to the test folder for examples.
+Returns an object with module exports, otherwise returns `null`. Supports CJS modules that export a function, array, plain object, or class. Index.js and dot files are ignored. Refer to the test folder for [examples](./test/fixtures/modules).
 
 ```js
 const Seeker = require('seeker');
