@@ -7,7 +7,7 @@
   </p>
 </h1>
 
-Seeker has the features we all wish Node's `require` had from day one, like requiring a module and optionally falling back to another module if it's missing, or requiring a directory of modules and getting all of their exports conveniently organized by file name. Perfect for local development in a team environment, and for projects that frequently require batches of modules.
+Seeker is a Node.js utility for effortlessly requiring one or many modules, whether they exist or not. Require a module and optionally fall back to another module if it's missing, or require a directory of modules and get all of their exports conveniently organized by file name. Perfect for local development in a team environment, and for projects that frequently require batches of modules.
 
 ## Install
 ```text
