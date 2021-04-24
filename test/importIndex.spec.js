@@ -4,13 +4,19 @@ const Seeker = require( './../lib' );
 
 describe( 'import index', () => {
   fancy
-    .add( 'exports', Seeker.import({ index: `${process.cwd()}/test/fixtures/invalidDir` }))
+    .add( 'exports', Seeker.import({ index: `${process.cwd()}/test/fixtures/invalidDirectory` }))
     .do( ctx => expect( ctx.exports ).to.be.null )
     .it( 'returns null if no valid modules are found in directory' );
   fancy
     .add( 'exports', Seeker.import({ index: `${process.cwd()}/test/fixtures/emptyFiles` }))
     .do( ctx => expect( ctx.exports ).to.be.null )
     .it( 'returns null for non-cjs modules or undefined exports' );
+  fancy
+    .add( 'exports', Seeker.import({ index: `${process.cwd()}/test/fixtures/subDirectories` }))
+    .do( ctx => expect( ctx.exports ).to.be.a( 'object' ))
+    .do( ctx => expect( ctx.exports.plugin ).to.exist )
+    .do( ctx => expect( ctx.exports.ignore ).to.not.exist )
+    .it( 'returns valid exports for indexes with subdirectories' );
   fancy
     .add( 'exports', Seeker.import({ index: `${process.cwd()}/test/fixtures/modules` }))
     .do( ctx => expect( ctx.exports.array ).to.be.a( 'array' ))
