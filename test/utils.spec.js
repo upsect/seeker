@@ -13,7 +13,7 @@ describe( 'utils', () => {
       .do( ctx => expect( ctx.dirents ).to.be.null )
       .it( 'returns null if path throws an error' );
     fancy
-      .add( 'dirents', Utils.readDir( `${process.cwd()}/test/fixtures/modules` ))
+      .add( 'dirents', Utils.readDir( `${process.cwd()}/test/fixtures/exampleModules` ))
       .do( ctx => expect( ctx.dirents ).to.be.a( 'array' ))
       .it( 'returns dirents if path contains files' );
   });

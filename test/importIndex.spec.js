@@ -8,17 +8,16 @@ describe( 'import index', () => {
     .do( ctx => expect( ctx.exports ).to.be.null )
     .it( 'returns null if no valid modules are found in directory' );
   fancy
-    .add( 'exports', Seeker.import({ index: `${process.cwd()}/test/fixtures/emptyFiles` }))
+    .add( 'exports', Seeker.import({ index: `${process.cwd()}/test/fixtures/emptyFile` }))
     .do( ctx => expect( ctx.exports ).to.be.null )
     .it( 'returns null for non-cjs modules or undefined exports' );
   fancy
-    .add( 'exports', Seeker.import({ index: `${process.cwd()}/test/fixtures/subDirectories` }))
+    .add( 'exports', Seeker.import({ index: `${process.cwd()}/test/fixtures/subDirAndDotFile` }))
     .do( ctx => expect( ctx.exports ).to.be.a( 'object' ))
     .do( ctx => expect( ctx.exports.plugin ).to.exist )
-    .do( ctx => expect( ctx.exports.ignore ).to.not.exist )
-    .it( 'returns valid exports for indexes with subdirectories' );
+    .it( 'returns valid exports with adjacent subdirs and dotfiles' );
   fancy
-    .add( 'exports', Seeker.import({ index: `${process.cwd()}/test/fixtures/modules` }))
+    .add( 'exports', Seeker.import({ index: `${process.cwd()}/test/fixtures/exampleModules` }))
     .do( ctx => expect( ctx.exports.array ).to.be.a( 'array' ))
     .do( ctx => expect( ctx.exports.class ).to.be.a( 'function' ))
     .do( ctx => expect( ctx.exports.function ).to.be.a( 'function' ))
