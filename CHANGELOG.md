@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][]
 
+## [1.0.3][] - 2021-04-25
+- Refactor validation for importIndex
+
 ## [1.0.2][] - 2021-04-24
 - Handle indexes with subdirectories
 
@@ -24,7 +27,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0][] - 2021-01-24
 - Initial release
 
-[unreleased]: https://github.com/upsect/seeker/compare/v1.0.2...HEAD
+[unreleased]: https://github.com/upsect/seeker/compare/v1.0.3...HEAD
+[1.0.1]: https://github.com/upsect/seeker/compare/v1.0.2...v1.0.3
 [1.0.1]: https://github.com/upsect/seeker/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/upsect/seeker/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/upsect/seeker/compare/v0.1.0...v1.0.0
